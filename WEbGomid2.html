@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #6E4B3A; /* Changed background to brown */
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background: #4e54c8;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #ffcccb;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #8b5028, #4e2f06);
+            color: white;
+        }
+
+        .header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin: 10px 0;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        /* About Section */
+        #about {
+            background-color: #ffffff;
+            color: #333;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #about h2 {
+            font-size: 2.5em;
+            color: #4e54c8;
+            margin-bottom: 20px;
+        }
+
+        #about p {
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        /* Gallery Section */
+        .gallery-container {
+            max-width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            scroll-behavior: smooth;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #4e54c8;
+        }
+
+        .gallery-grid {
+            display: inline-flex;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .gallery-item img {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Image Magnification */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .modal img {
+            max-width: 80%;
+            max-height: 80%;
+            transition: transform 0.3s ease;
+        }
+
+        /* Contact Section */
+        #inquiry {
+            text-align: center;
+            padding: 20px;
+            background: #e3eef5;
+        }
+
+        #inquiry h2 {
+            font-size: 2em;
+            color: #4e54c8;
+            margin-bottom: 10px;
+        }
+
+        #inquiry p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        #inquiry a {
+            color: #4e54c8;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #inquiry a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Section */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #4e54c8;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #ffcccb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#inquiry">Contact</a>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header" id="home">
+        <img src="owen.jpeg.jpg" alt="Owen Leigh Profile Picture">
+        <h1>Hi! I'm Owen Leigh</h1>
+        <p>Animator | Graphic Artist | Portrait Artist</p>
+        <p>Based in Aurora, Zamboanga del Sur</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/owen.leigh.75" target="_blank" title="Facebook">&#x1F4F1;</a>    
+            <a href="https://www.instagram.com/leighh_owenn/" target="_blank" title="Instagram">&#x1F4F7;</a>
+            <a href="mailto:owenleigh.gomid@nmsc.edu.ph" title="Email">&#x2709;</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a student of BS-Animation and Multimedia Arts in Northwestern Mindanao State College of Science and Technology (NMSCST). I'm an aspiring artist and very passionate about making arts. I also do animations, digital art, graphic designs, and portraits. My creations make perfect gifts for all occasions.</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-container" id="gallery">
+        <h2 class="gallery-title">Traditional Art Samples</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="gallery1.jpeg.jpg" alt="Traditional Artwork 1"></div>
+            <div class="gallery-item"><img src="gallery2.jpeg.jpg" alt="Traditional Artwork 2"></div>
+            <div class="gallery-item"><img src="gallery3.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery4.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery5.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery6.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery7.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery8.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery9.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery10.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery11.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery12.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery13.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery14.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery15.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery16.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery17.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery18.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery19.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery20.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery21.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery22.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery23.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery24.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery25.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery26.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery27.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery28.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery29.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery30.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery31.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery32.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery33.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery34.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery35.jpeg.jpg" alt="Traditional Artwork 3"></div>
+            <div class="gallery-item"><img src="gallery36.jpeg.jpg" alt="Traditional Artwork 3"></div>
+
+        </div>
+    </section>
+
+    <section class="gallery-container">
+        <h2 class="gallery-title">Digital Art Samples</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="digiart.jpeg.jpg" alt="Digital Artwork 1"></div>
+            <div class="gallery-item"><img src="digiart1.jpeg.jpg" alt="Digital Artwork 2"></div>
+            <div class="gallery-item"><img src="digiart2.jpeg.jpg" alt="Digital Artwork 3"></div>
+            <div class="gallery-item"><img src="digiart3.jpeg.jpg" alt="Digital Artwork 3"></div>
+            <div class="gallery-item"><img src="digiart4.jpeg.jpg" alt="Digital Artwork 3"></div>
+            <div class="gallery-item"><img src="digiart5.jpeg.jpg" alt="Digital Artwork 3"></div>
+            <div class="gallery-item"><img src="digiart6.jpeg.jpg" alt="Digital Artwork 3"></div>
+            <div class="gallery-item"><img src="digiart7.jpeg.jpg" alt="Digital Artwork 3"></div>
+            <div class="gallery-item"><img src="digiart8.jpeg.jpg" alt="Digital Artwork 3"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="inquiry">
+        <h2>For Inquiries and Commissions</h2>
+        <p>Feel free to contact me via <a href="mailto:owenleigh.gomid@nmsc.edu.ph">Email</a> or <a href="tel:+639555787996">Call</a> at 09555787996.</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>Contact me via <a href="mailto:owenleigh.gomid@nmsc.edu.ph">Email</a> | Follow me on 
+            <a href="https://www.facebook.com/owen.leigh.75" target="_blank">Facebook</a> | 
+            <a href="https://www.instagram.com/leighh_owenn/" target="_blank">Instagram</a>
+        </p>
+        <p>&copy; 2024 Owen Leigh S. Gomid. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modal for Image Magnification -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <img id="modalImage" src="" alt="">
+    </div>
+
+    <script>
+        function openModal(imgElement) {
+            var modal = document.getElementById("imageModal");
+            var modalImage = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImage.src = imgElement.src;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+    </script>
+
+    
+
+    
+</body>
+</html>
